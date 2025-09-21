@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:kikin/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,11 +18,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'KiKin',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: WorkAppTheme.lightTheme,
       home: Scaffold(
         appBar: AppBar(title: Text('KiKin')),
         body: Container(
-          color: Colors.black,
+          color: Colors.grey[200],
           child: Column(children: [_CurrentTimeCard()]),
         ),
       ),
@@ -105,8 +106,10 @@ class _CurrentTimeCardState extends State<_CurrentTimeCard> {
         child: Column(
           children: [
             Text(_hourMinuteSecond ?? '', style: TextStyle(fontSize: 24)),
-            Text(_yearMonthDay ?? ''),
-            Text(_weekDay ?? ''),
+            Text(
+              '$_yearMonthDay ($_weekDay)',
+              style: TextStyle(fontSize: 14, color: Colors.black54),
+            ),
           ],
         ),
       ),
